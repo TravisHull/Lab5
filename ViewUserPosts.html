@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>View User Posts</title>
+  </head>
+
+  <body>
+    <div class="home-button">
+      <a href="https://people.eecs.ku.edu/~t819h638/Lab5/AdminHome.html">Back to Admin Home</a>
+    </div>
+    <div class="container" style="text-align:center">
+      <form name="dropDown" method="post" action="ViewUserPosts.php">
+        <select name="option">
+         <?php
+         $connection = new mysqli("mysql.eecs.ku.edu", "t819h638", "di7toh3K", "t819h638");
+         $sql = $connection->query("SELECT user_id FROM Users");
+         while ($row = $sql->fetch_assoc())
+         {
+           echo '<option value="'.$row['user_id'].'">'.$row['user_id'].'</option>';
+         }
+         ?>
+        </select>
+        <input type="submit" value="View Posts">
+      </form>
+   </div>
+  </body>
+</html>
