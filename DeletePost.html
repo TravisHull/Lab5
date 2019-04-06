@@ -22,7 +22,7 @@
           while ($row = $sql->fetch_assoc())
           {
             echo "<tr>
-                    <td>".$row['content']."</td>
+                    <td style='text-align:center'>".$row['content']."</td>
                     <td style='text-align:center'>".$row['author_id']."</td>
                     <td style='text-align:center'> <input type='checkbox' name='check[]' id='check' value='".$row['post_id']."' />&nbsp;</td>
                   </tr>";
