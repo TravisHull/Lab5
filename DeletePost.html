@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Ban Hammer Page</title>
+  </head>
+
+  <body onload="table.reset()">
+    <div class="home-button">
+      <a href="https://people.eecs.ku.edu/~t819h638/Lab5/AdminHome.html">Back to Admin Home</a>
+    </div>
+    <div class="container" style="text-align:center">
+      <form name="table" method="get" action="DeletePost.php">
+        <table style="width:80%">
+          <tr>
+            <th>Post</th>
+            <th>Author</th>
+            <th>Delete?</th>
+          </tr>
+
+          <?php
+          $con = new mysqli("mysql.eecs.ku.edu", "t819h638", "di7toh3K", "t819h638");
+          $sql = $con->query("SELECT post_id, content, author_id FROM Posts");
+          while ($row = $sql->fetch_assoc())
+          {
+            echo "<tr>
+                    <td>".$row['content']."</td>
+                    <td style='text-align:center'>".$row['author_id']."</td>
+                    <td style='text-align:center'> <input type='checkbox' name='check[]' id='check' value='".$row['post_id']."' />&nbsp;</td>
+                  </tr>";
+          }
+          ?>
+        </table>
+        <input type="submit" value="DELETE POSTS">
+      </form>
+    </div>
+  </body>
+</html>
